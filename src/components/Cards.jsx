@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function Cards({ onDelete, repositories }) {
+function Cards({ onDeleteRepo, repositories }) {
 
   return (
     <div className="w-full bg-slate-200 rounded-lg shadow-lg max-w-3xl items-center">
@@ -18,7 +18,7 @@ function Cards({ onDelete, repositories }) {
                     </div>
                     <button 
                     className="flex-shrink-0 bg-zinc-500 hover:bg-zinc-700 border-zinc-500 hover:border-zinc-700 text-sm border-4 text-white py-1 px-2 rounded" 
-                    onClick={() => onDelete(repositories)}
+                    onClick={() => onDeleteRepo()}
                     >
                         Apagar
                     </button>

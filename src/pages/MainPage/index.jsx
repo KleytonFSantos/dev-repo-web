@@ -4,7 +4,7 @@ import Cards from '../../components/Cards';
 import Navbar from '../../components/Navbar';
 import Search from '../../components/Search';
 
-import { listRepositories, createRepository } from '../../services/api';
+import { listRepositories, createRepository, destroyRepository } from '../../services/api';
 
 const userId = '629be7119a57d0dcac7674b1';
 
@@ -45,7 +45,15 @@ const MainPage = () => {
         console.log('logout');
     }
     
-    const handleDeleteRepo =  () => {
+    const handleDeleteRepo = async (repository) => {
+        try {
+            console.log('delete repo', repository)
+            await destroyRepository(userId, repository._id);
+            await loadData();
+        } catch(err) {
+            console.log(err);
+            setLoadingError(true);
+        }
     }
 
     const handleNewRepo =  async (url) => {
@@ -76,7 +84,7 @@ const MainPage = () => {
             <Search onSearch={handleSearch}/>
             
             <div className='flex-1 mb-1 items-center my-8 mx-auto flex flex-col gap-4 max-w-2xl p-2'>
-                <Cards  repositories={repositories} onDeleteRepo={handleDeleteRepo}/>
+                <Cards  repositories={repositories} onDeleteRepo={() => handleDeleteRepo(userId)}/>
             </div>
 
             <form className="flex max-w-3xl items-center justify-center my-8 mx-auto p-2">
