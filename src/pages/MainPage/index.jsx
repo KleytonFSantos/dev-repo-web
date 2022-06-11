@@ -19,7 +19,7 @@ const MainPage = () => {
        try{
         setLoading(true);
 
-        const response = await listRepositories(userId);
+        const response = await listRepositories(userId, query);
 
         setRepositories(response.data);
         setLoading(false);
@@ -37,8 +37,8 @@ const MainPage = () => {
         
     }, []);
 
-    const handleSearch = (query) => {
-        console.log('query', query);
+    const handleSearch = (query) => {     
+        loadData(query);
     }
 
     const handleLogout = () => {
