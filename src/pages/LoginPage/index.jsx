@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { LockClosedIcon } from '@heroicons/react/solid'
+import { LockClosedIcon } from '@heroicons/react/solid';
+
+import useAuth from '../../hooks/UseAuth';
 
 const LoginPage = () => {
-
+    const { user, authenticated, login } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        console.log('Login');
+    const handleLogin = async (e) => {
+        try {
+          e.preventDefault();
+         const response = login(email, password);   
+        } catch (err) {
+          console.log(err);
+        }
     }
+    
+
 
   return (
     <>
@@ -20,9 +28,8 @@ const LoginPage = () => {
             className="mx-auto h-12 w-auto"
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt="Workflow"
-          />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>
-
+            />
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>  
         </div>
         <form className="mt-8 space-y-6" action="#" method="POST">
           <input type="hidden" name="remember" defaultValue="true" />

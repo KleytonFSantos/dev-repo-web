@@ -5,10 +5,15 @@ import Navbar from '../../components/Navbar';
 import Search from '../../components/Search';
 
 import { listRepositories, createRepository, destroyRepository } from '../../services/api';
+import useAuth from '../../hooks/UseAuth';
 
-const userId = '629be7119a57d0dcac7674b1';
+
 
 const MainPage = () => {
+
+    const { user, logout } = useAuth();
+
+    const userId = user?.id;
 
     const [repositories, setRepositories] = useState([]);
     const [loadingError, setLoadingError] = useState(false);
@@ -42,7 +47,7 @@ const MainPage = () => {
     }
 
     const handleLogout = () => {
-        console.log('logout');
+        logout();
     }
     
     const handleDeleteRepo = async (repository) => {
@@ -80,7 +85,6 @@ const MainPage = () => {
     return (
         <div id='main' className='items-center'>
             <Navbar onLogout={handleLogout}/>
-            
             <Search onSearch={handleSearch}/>
             
             <div className='flex-1 mb-1 items-center my-8 mx-auto flex flex-col gap-4 max-w-2xl p-2'>
