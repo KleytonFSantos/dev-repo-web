@@ -1,12 +1,17 @@
 import React from 'react'
 
-function Cards({ onDeleteRepo, repositories }) {
+type Repository = {
+    _id: string;
+    name: string;
+}
+
+function Cards({ onDeleteRepo, repositories)  {
 
   return (
     <div className="w-full bg-slate-200 rounded-lg shadow-lg max-w-3xl items-center">
         <ul className="divide-y-2 divide-gray-200">
             
-               {repositories.map(repository => (
+               {repositories.map((repository: Repository) => (
                 <li className="flex justify-between p-3 rounded-md" key={repository._id} >
                     <div>
                         <div className='mb-2'>

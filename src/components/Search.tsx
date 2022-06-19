@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function Search({ onSearch }) {
 
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState<string>('');
 
     const handleClear = () => {
         setQuery('');
