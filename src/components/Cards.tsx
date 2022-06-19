@@ -5,7 +5,7 @@ type Repository = {
     name: string;
 }
 
-function Cards({ onDeleteRepo, repositories)  {
+function Cards( onDeleteRepo, repositories)  {
 
   return (
     <div className="w-full bg-slate-200 rounded-lg shadow-lg max-w-3xl items-center">
