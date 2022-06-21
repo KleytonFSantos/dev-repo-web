@@ -1,6 +1,10 @@
 import React from 'react'
 
-function Navbar({ onLogout }) {
+export type Props = {
+    onLogout: () => void;
+}
+
+function Navbar({ onLogout }:Props): JSX.Element {
 
   return (
     <>

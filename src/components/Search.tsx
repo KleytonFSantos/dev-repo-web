@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-function Search({ onSearch }) {
+export type Props = {
+    onSearch: (query: string) => void;
+}
+
+function Search({ onSearch }: Props) : JSX.Element {
 
     const [query, setQuery] = useState<string>('');
 
